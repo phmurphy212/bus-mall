@@ -1,0 +1,67 @@
+body {
+  background-color: mediumaquamarine;
+}
+header {
+border: 4px #80614A solid; 
+padding: 10px; 
+margin-bottom: 10px;
+}
+header h1 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 3em; 
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px #80614A;
+}
+main {
+  padding: 25px;
+  background-color: rgb(194, 126, 138);
+  border: 4px #80614A solid;
+  width: max-content;
+  margin: auto;
+}
+main h3 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1.6em;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+main section {
+  margin-top: 2%;
+  background-color: rgb(194, 126, 138);
+  border: 4px #80614A solid;
+  width: max-content;
+}
+section img {
+  padding: 5px; 
+  height: 300px;
+  width: 300px;
+}
+main div {
+  background-color: #80614A;
+  margin: auto;
+  padding: 12px; 
+  border-radius: 10px; 
+  margin-top: 5%;
+  width: max-content; 
+  border: 2px white solid;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1em;
+  color: white;
+  text-shadow: 1px .2px black;
+}
+main ul {
+  background-color: #80614A;
+  margin: auto;
+  margin-top: 50px;
+  width: max-content;
+}
+main li {
+  border: 1px white ridge;
+  margin: auto;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1em;
+  line-height: 1.5em;
+  padding: 5px;
+}
