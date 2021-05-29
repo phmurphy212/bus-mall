@@ -1,69 +1,93 @@
 'use strict';
 
-let allGoats = [];
+let allProducts = [];
 let clicks = 0;
-let clicksAllowed = 15;
+let clicksAllowed = 25;
 
 let myContainer = document.querySelector('section');
 let myButton = document.querySelector('div');
 let imageOne = document.querySelector('section img:first-child');
 let imageTwo = document.querySelector('section img:nth-child(2)');
+let imageThree = document.querySelector('section img:nth-child(3)');
+let noRepeats = [];
 
-function Goat (name, fileExtension = 'jpg'){
+function Product (name, fileExtension = 'jpg'){
   this.name = name;
   this.src = `img/${name}.${fileExtension}`;
   this.clicks = 0;
   this.views = 0;
-  allGoats.push(this);
+  allProducts.push(this);
 }
 
-this Goat('bunny-goat', 'png');
-this Goat('cool-goat');
-this Goat('cruisin-goat');
-this Goat('float-your-goat');
-this Goat('goat-out-of-hand');
-this Goat('kissing-goat');
-this Goat('lucky-goat');
-this Goat('sassy-goat');
-this Goat('smiling-goat');
-this Goat('sweater-goat');
+new Product('bag');
+new Product('banana');
+new Product('bathroom');
+new Product('boots');
+new Product('breakfast');
+new Product('bubblegum');
+new Product('chair');
+new Product('cthulhu');
+new Product('dog-duck');
+new Product('dragon');
+new Product('pen');
+new Product('pet-sweep');
+new Product('scissors');
+new Product('shark');
+new Product('sweep', 'png');
+new Product('tauntaun');
+new Product('unicorn');
+new Product('water-can');
+new Product('wine-glass');
 
-
-function selectRandomGoatIndex(){
-  return Math.floor(Math.random() + allGoats.length);
+function selectRandomProductIndex(){
+  let selectedItem = Math.floor(Math.random() * allProducts.length);
+  return selectedItem;
 }
 
-function renderRandomGoats(){
-  let goatOne = selectRandomGoatIndex();
-  let goatTwo = selectRandomGoatIndex();
-  while (goatOne === goatTwo){
-    goatTwo = selectRandomGoatIndex();
+function renderRandomProducts(){
+  while (noRepeats.length < 3){
+    let uniqueProduct = selectRandomProductIndex();
+    // while unique product isn't in  noRepeats, put in noRepeats
+    while (!noRepeats.includes(uniqueProduct)){
+      noRepeats.push(uniqueProduct);
+    }
   }
-  imageOne.alt = allGoats[goatOne].name;
-  imageOne.src = allGoats[goatOne].src;
-  allGoats[goatOne].views++;
+  console.log(noRepeats);
+  let productOne = noRepeats.pop();
+  let productTwo = noRepeats.pop();
+  let productThree = noRepeats.pop();
+  // noRepeats.push(productOne, productTwo, productThree);
+  // console.log(noRepeats);
 
-  imageTwo.alt = allGoats[goatTwo].name;
-  imageTwo.src = allGoats[goatTwo].src;
-  allGoats[goatTwo].views++;
+  imageOne.alt = allProducts[productOne].name;
+  imageOne.src = allProducts[productOne].src;
+  allProducts[productOne].views++;
+
+  imageTwo.alt = allProducts[productTwo].name;
+  imageTwo.src = allProducts[productTwo].src;
+  allProducts[productTwo].views++;
+
+  imageThree.alt = allProducts[productThree].name;
+  imageThree.src = allProducts[productThree].src;
+  allProducts[productThree].views++;
 }
 
-function handleGoatClick(event){
+function handleProductClick(event){
   if (event.target === myContainer){
-    alert(`click on an IMAGE please`);
+    alert('click on an IMAGE please`');
   }
 
   clicks++;
-  let clickedGoat = event.target.alt;
-  for (let i = 0; i < allGoats.length; i++){
-    if (clickedGoat === allGoats[i].name){
-      allGoats[i].clicks++;
+  let clickedProduct = event.target.alt;
+  for (let i = 0; i < allProducts.length; i++){
+    if (clickedProduct === allProducts[i].name){
+      allProducts[i].clicks++;
     }
   }
-  renderRandomGoats();
+  renderRandomProducts();
 
   if(clicks === clicksAllowed){
-    myContainer.removeEventListener('click', handleGoatClick);
+    myContainer.removeEventListener('click', handleProductClick);
   }
 }
 function handleButtonClick(event){
@@ -73,13 +97,13 @@ function handleButtonClick(event){
 }
 function renderResults(){
   let ul = document.querySelector('ul');
-  for (let i = 0; i < allGoats.length; i++){
-    let li = document.createElement('li')
-    li.textContent = `${allGoats[i].name} had ${allGoats[i].views} view and was clicked ${allGoats[i].clicks} times.`;
+  for (let i = 0; i < allProducts.length; i++){
+    let li = document.createElement('li');
+    li.textContent = `${allProducts[i].name} had ${allProducts[i].views} view and was clicked ${allProducts[i].clicks} times.`;
     ul.appendChild(li);
   }
 }
-renderRandomGoats();
+renderRandomProducts();
 
-myContainer.addEventListener('click', handleGoatClick);
+myContainer.addEventListener('click', handleProductClick);
 myButton.addEventListener('click', handleButtonClick);
