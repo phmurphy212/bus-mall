@@ -47,17 +47,13 @@ function selectRandomProductIndex(){
 function renderRandomProducts(){
   while (noRepeats.length < 3){
     let uniqueProduct = selectRandomProductIndex();
-    // while unique product isn't in  noRepeats, put in noRepeats
     while (!noRepeats.includes(uniqueProduct)){
       noRepeats.push(uniqueProduct);
     }
   }
-  console.log(noRepeats);
   let productOne = noRepeats.pop();
   let productTwo = noRepeats.pop();
   let productThree = noRepeats.pop();
-  // noRepeats.push(productOne, productTwo, productThree);
-  // console.log(noRepeats);
 
   imageOne.alt = allProducts[productOne].name;
   imageOne.src = allProducts[productOne].src;
@@ -76,7 +72,6 @@ function handleProductClick(event){
   if (event.target === myContainer){
     alert('click on an IMAGE please`');
   }
-
   clicks++;
   let clickedProduct = event.target.alt;
   for (let i = 0; i < allProducts.length; i++){
