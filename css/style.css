@@ -51,7 +51,7 @@ main div {
   color: white;
   text-shadow: 1px .2px black;
 }
-main ul {
+/* main ul {
   background-color: #80614A;
   margin: auto;
   margin-top: 50px;
@@ -64,4 +64,7 @@ main li {
   font-size: 1em;
   line-height: 1.5em;
   padding: 5px;
+} */
+#myChart {
+  background-color: white;
 }
