@@ -10,6 +10,8 @@ let myButton = document.querySelector('div');
 let imageOne = document.querySelector('section img:first-child');
 let imageTwo = document.querySelector('section img:nth-child(2)');
 let imageThree = document.querySelector('section img:nth-child(3)');
+let getChart = document.getElementById('myChart').getContext('2d');
+
 let noRepeats = [];
 
 function Product(name, fileExtension = 'jpg') {
@@ -49,7 +51,7 @@ function renderRandomProducts() {
   while (noRepeats.length < 6) {
     let uniqueProduct = selectRandomProductIndex();
     while (!noRepeats.includes(uniqueProduct)) {
-      noRepeats.push(uniqueProduct);
+      noRepeats.unshift(uniqueProduct);
     }
   }
   let productOne = noRepeats.pop();
@@ -88,21 +90,13 @@ function handleProductClick(event) {
 }
 function handleButtonClick(event) {
   if (clicks === clicksAllowed) {
-    createChart();
     buttonsClicked++;
   }
   if (buttonsClicked > 0) {
     myButton.removeEventListener('click', handleButtonClick);
+    createChart();
   }
 }
-// function renderResults(){
-//   let ul = document.querySelector('ul');
-//   for (let i = 0; i < allProducts.length; i++){
-//     let li = document.createElement('li');
-//     li.textContent = `${allProducts[i].name} had ${allProducts[i].views} view and was clicked ${allProducts[i].clicks} times.`;
-//     ul.appendChild(li);
-//   }
-// }
 function createChart() {
   let viewsArray = [];
   let clicksArray = [];
@@ -110,7 +104,7 @@ function createChart() {
 
   for (let i = 0; i < allProducts.length; i++) {
     let oneProductName = allProducts[i].name;
-    viewsArray.push(oneProductName);
+    namesArray.push(oneProductName);
   }
   for (let i = 0; i < allProducts.length; i++) {
     let oneProductView = allProducts[i].views;
@@ -118,10 +112,8 @@ function createChart() {
   }
   for (let i = 0; i < allProducts.length; i++) {
     let oneProductClick = allProducts[i].clicks;
-    viewsArray.push(oneProductClick);
+    clicksArray.push(oneProductClick);
   }
-
-  let getChart = document.getElementById('myChart').getContext('2d');
   let myChart = new Chart(getChart, {
     type: 'bar',
     data: {

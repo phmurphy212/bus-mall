@@ -27,7 +27,7 @@ main h3 {
   text-align: center;
   padding: 10px;
 }
-main section {
+#images {
   margin-top: 2%;
   background-color: rgb(194, 126, 138);
   border: 4px #80614A solid;
@@ -37,6 +37,16 @@ section img {
   padding: 5px; 
   height: 300px;
   width: 300px;
+}
+/* #chartData {
+  
+} */
+canvas {
+  display: none;
+  margin-top: 2%;
+  border: 4px #80614A solid;
+  background-color: white;
+  /* width: max-content; */
 }
 main div {
   background-color: #80614A;
@@ -50,21 +60,4 @@ main div {
   font-size: 1em;
   color: white;
   text-shadow: 1px .2px black;
-}
-/* main ul {
-  background-color: #80614A;
-  margin: auto;
-  margin-top: 50px;
-  width: max-content;
-}
-main li {
-  border: 1px white ridge;
-  margin: auto;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 1em;
-  line-height: 1.5em;
-  padding: 5px;
-} */
-#myChart {
-  background-color: white;
 }
